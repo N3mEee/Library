@@ -1,0 +1,45 @@
+:root{
+    --dark: #222831;
+    --lightdark: #393E46;
+    --blueish: #00ADB5;
+    --light: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--lightdark);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 40px;
+    background-color: var(--lightdark);
+}
+
+.header .logo {
+    color: var(--light);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.nav-bar ul {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+
+ul a {
+    color: var(--blueish);
+    text-decoration: none;
+}
