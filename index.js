@@ -1,3 +1,4 @@
+const CREATE = document.querySelector("button");
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -10,12 +11,9 @@ function Book(title, author, pages, read) {
     };
 }
 
-function addBookToLibrary() {
-    myLibrary.push(new Book("Game Of Thrones", "Marcel Pavel", 123, "Nope"));
-    myLibrary.push(new Book("Alice In Romania", "Grigore Lese", 326, "Yep"));
-    myLibrary.push(new Book("Garcea", "Florin Salam", 27, "Nope"));
+function addBookToLibrary(title, author, pages, read) {
+    myLibrary.push(new Book(title, author, pages, read));
 }
-addBookToLibrary();
 
 function displayBook() {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -40,4 +38,7 @@ function displayBook() {
     }
 }
 
-displayBook();
+CREATE.addEventListener("click", function () {
+    addBookToLibrary(prompt("Title?"), prompt("Author?"), prompt("Pages?"), prompt("Read?"));
+    displayBook();
+});
