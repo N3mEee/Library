@@ -1,8 +1,8 @@
-:root{
+:root {
     --dark: #222831;
-    --lightdark: #393E46;
-    --blueish: #00ADB5;
-    --light: #EEEEEE;
+    --lightdark: #393e46;
+    --blueish: #00adb5;
+    --light: #eeeeee;
 }
 
 * {
@@ -10,8 +10,11 @@
     padding: 0;
 }
 
-body{
+body {
     background-color: var(--lightdark);
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    height: 100vh;
 }
 
 .header {
@@ -38,8 +41,75 @@ body{
     list-style: none;
 }
 
-
-ul a {
+ul a,
+a {
     color: var(--blueish);
     text-decoration: none;
+}
+
+.container {
+    padding-top: 100px;
+    background-color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color: var(--light);
+    color: var(--dark);
+    align-self: center;
+    border: 2px solid var(--dark);
+    transition: all 300ms ease-in-out;
+    z-index: 999;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--lightdark);
+    color: var(--light);
+    border-color: var(--blueish);
+    transition: all 300ms ease-in-out;
+}
+
+.table-wrapper {
+    width: 70%;
+    margin: 10px 70px 70px;
+    box-shadow: 0px 0px 1000px var(--blueish);
+}
+
+table {
+    border-radius: 125px;
+    border-collapse: collapse;
+    width: 100%;
+    white-space: nowrap;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+table td,
+table th {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid var(--blueish);
+}
+
+table th {
+    color: var(--dark);
+    background: var(--light);
+}
+
+table tr:nth-child(odd) {
+    background: var(--lightdark);
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
