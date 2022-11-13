@@ -133,12 +133,13 @@ table tr:nth-child(odd) {
     z-index: 9999;
 }
 
-form, ul, li{
+form, ul>li{
     display: flex;
     gap: 10px;
     flex-direction: column;
     color: var(--blueish);
     align-items: center;
+    text-align: center;
 }
 
 form li:nth-child(4) {
