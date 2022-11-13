@@ -1,4 +1,7 @@
-const CREATE = document.querySelector("button");
+const $createButton = document.querySelector(".button-create");
+const $addButton = document.querySelector(".button-add");
+const $form = document.querySelector(".form-container");
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -6,9 +9,6 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function () {
-        return `${this.title} by ${this.author}, ${this.pages} pages ${this.read}`;
-    };
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -16,29 +16,56 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBook() {
+    const $table = document.querySelector("tbody");
+    $table.innerHTML = `<tr>
+                            <th>Book</th>
+                            <th>Pages</th>
+                            <th>Author</th>
+                            <th>Read?</th>
+                        </tr>`;
+
     for (let i = 0; i < myLibrary.length; i++) {
-        const TABLE = document.querySelector("tbody");
-        const ROW = document.createElement("tr");
-        const TITLE = document.createElement("td");
-        const AUTHOR = document.createElement("td");
-        const PAGES = document.createElement("td");
-        const READ = document.createElement("td");
+        const $row = document.createElement("tr");
+        const $title = document.createElement("td");
+        const $author = document.createElement("td");
+        const $pages = document.createElement("td");
+        const $read = document.createElement("td");
 
-        TITLE.textContent = myLibrary[i].title;
-        AUTHOR.textContent = myLibrary[i].author;
-        PAGES.textContent = myLibrary[i].pages;
-        READ.textContent = myLibrary[i].read;
+        $title.textContent = myLibrary[i].title;
+        $author.textContent = myLibrary[i].author;
+        $pages.textContent = myLibrary[i].pages;
+        $read.textContent = myLibrary[i].read;
 
-        ROW.appendChild(TITLE);
-        ROW.appendChild(AUTHOR);
-        ROW.appendChild(PAGES);
-        ROW.appendChild(READ);
+        $row.appendChild($title);
+        $row.appendChild($author);
+        $row.appendChild($pages);
+        $row.appendChild($read);
 
-        TABLE.appendChild(ROW);
+        $table.appendChild($row);
     }
 }
 
-CREATE.addEventListener("click", function () {
-    addBookToLibrary(prompt("Title?"), prompt("Author?"), prompt("Pages?"), prompt("Read?"));
+$createButton.addEventListener("click", function () {
+    if (!$form.classList.contains("form-container-show")) {
+        $form.classList.add("form-container-show");
+    } else {
+        $form.classList.remove("form-container-show");
+    }
+});
+
+$addButton.addEventListener("click", function (event) {
+    const $inputTitle = document.querySelector("input[name=title]");
+    const $inputAuthor = document.querySelector("input[name=author]");
+    const $inputPages = document.querySelector("input[name=pages]");
+    const $inputRead = document.querySelector("input[name=read]");
+
+    addBookToLibrary($inputTitle.value, $inputAuthor.value, $inputPages.value, $inputRead.checked);
     displayBook();
+    event.preventDefault();
+
+    if (!$form.classList.contains("form-container-show")) {
+        $form.classList.add("form-container-show");
+    } else {
+        $form.classList.remove("form-container-show");
+    }
 });

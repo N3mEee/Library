@@ -15,6 +15,7 @@ body {
     display: grid;
     grid-template-rows: 50px 1fr 50px;
     height: 100vh;
+    position: relative;
 }
 
 .header {
@@ -80,11 +81,9 @@ button:hover {
 .table-wrapper {
     width: 70%;
     margin: 10px 70px 70px;
-    box-shadow: 0px 0px 1000px var(--blueish);
 }
 
 table {
-    border-radius: 125px;
     border-collapse: collapse;
     width: 100%;
     white-space: nowrap;
@@ -94,12 +93,14 @@ table {
 
 table td,
 table th {
+    box-shadow: 0px 0px 1000px var(--blueish);
     text-align: center;
     padding: 8px;
-    border: 1px solid var(--blueish);
+    border: 1px solid var(--light);
 }
 
 table th {
+    border: var(--dark);
     color: var(--dark);
     background: var(--light);
 }
@@ -112,4 +113,30 @@ table tr:nth-child(odd) {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.form-container {
+    background-color: var(--dark);
+    box-shadow: 0 0 40px var(--dark);
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease-in-out;
+}
+
+.form-container-show {
+    left: 50%;
+    transition: all 0.4s ease-in-out;
+    z-index: 9999;
+}
+
+form {
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    color: var(--blueish);
+    align-items: center;
 }
