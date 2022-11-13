@@ -133,7 +133,7 @@ table tr:nth-child(odd) {
     z-index: 9999;
 }
 
-form, ul>li{
+form, form ul>li{
     display: flex;
     gap: 10px;
     flex-direction: column;
