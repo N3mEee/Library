@@ -1,5 +1,6 @@
 const $createButton = document.querySelector(".button-create");
 const $addButton = document.querySelector(".button-add");
+const $cancelButton = document.querySelector(".button-cancel");
 const $form = document.querySelector(".form-container");
 
 let myLibrary = [];
@@ -54,15 +55,27 @@ $createButton.addEventListener("click", function () {
 });
 
 $addButton.addEventListener("click", function (event) {
+    event.preventDefault();
     const $inputTitle = document.querySelector("input[name=title]");
     const $inputAuthor = document.querySelector("input[name=author]");
     const $inputPages = document.querySelector("input[name=pages]");
     const $inputRead = document.querySelector("input[name=read]");
+    if ($inputTitle.validity.valueMissing || $inputAuthor.validity.valueMissing || $inputPages.validity.valueMissing) {
+        const $pError = document.querySelector(".p-error")
+        $pError.textContent = "Invalid title, author or pages";
+    } else {
+        addBookToLibrary($inputTitle.value, $inputAuthor.value, $inputPages.value, $inputRead.checked);
+        displayBook();
 
-    addBookToLibrary($inputTitle.value, $inputAuthor.value, $inputPages.value, $inputRead.checked);
-    displayBook();
-    event.preventDefault();
+        if (!$form.classList.contains("form-container-show")) {
+            $form.classList.add("form-container-show");
+        } else {
+            $form.classList.remove("form-container-show");
+        }
+    }
+});
 
+$cancelButton.addEventListener("click", function (event) {
     if (!$form.classList.contains("form-container-show")) {
         $form.classList.add("form-container-show");
     } else {
