@@ -27,15 +27,29 @@
         </div>
         <div class="form-container">
             <form>
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required />
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author" required />
-                <label for="pages">Pages</label>
-                <input type="number" id="pages" name="pages" required />
-                <label for="read">Read?</label>
-                <input type="checkbox" id="read" name="read" required />
-                <button class="button-add" type="submit"></button>
+                <ul>
+                    <li>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required />
+                    </li>
+                    <li>
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" required />
+                    </li>
+                    <li>
+                        <label for="pages">Pages</label>
+                        <input type="number" id="pages" name="pages" required />
+                    </li>
+                    <li>
+                        <label for="read">Have you read it?</label>
+                        <input type="checkbox" id="read" name="read" />
+                    </li>
+                </ul>
+                <div class="buttons">
+                    <p class="p-error"></p>
+                    <button class="button-add" type="submit">Add</button>
+                    <button class="button-cancel" type="button">Cancel</button>
+                </div>
             </form>
         </div>
         <div class="container">
