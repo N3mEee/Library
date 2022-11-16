@@ -34,15 +34,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBook() {
-    const $table = document.querySelector("tbody");
-    $table.innerHTML = `<tr>
-                            <th>Book</th>
-                            <th>Author</th>
-                            <th>Pages</th>
-                            <th>Read?</th>
-                            <th>Edit</th>
-                        </tr>`;
-
+    const $tbody = document.querySelector("tbody");
+    $tbody.innerHTML = ``;
     for (let i = 0; i < myLibrary.length; i++) {
         const $row = document.createElement("tr");
         const $title = document.createElement("td");
@@ -54,10 +47,12 @@ function displayBook() {
         $title.textContent = myLibrary[i].title;
         $author.textContent = myLibrary[i].author;
         $pages.textContent = myLibrary[i].pages;
-        $read.textContent = (myLibrary[i].read) ? 'read' : "not read";
+        $read.textContent = myLibrary[i].read ? "read" : "not read";
+        //TODO: create the buttons without innerHTML and $edit.appendChild(the buttons)
         $edit.innerHTML = `<button class="edit">Edit</button>
                            <button class="delete">Delete</button>`;
         $edit.children[0].setAttribute("data-id", `${i}`);
+        $edit.children[1].setAttribute("data-id", `${i}`);
 
         $row.appendChild($title);
         $row.appendChild($author);
@@ -65,7 +60,7 @@ function displayBook() {
         $row.appendChild($read);
         $row.appendChild($edit);
 
-        $table.appendChild($row);
+        $tbody.appendChild($row);
     }
 }
 displayBook();
