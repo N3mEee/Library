@@ -49,20 +49,21 @@ function displayBook() {
         const $author = document.createElement("td");
         const $pages = document.createElement("td");
         const $read = document.createElement("td");
-        const $delete = document.createElement("td");
+        const $edit = document.createElement("td");
 
         $title.textContent = myLibrary[i].title;
         $author.textContent = myLibrary[i].author;
         $pages.textContent = myLibrary[i].pages;
-        $read.textContent = myLibrary[i].read;
-        $delete.innerHTML = `<button class="delete">Delete</button>`;
-        $delete.children[0].setAttribute("data-id", `${i}`);
+        $read.textContent = (myLibrary[i].read) ? 'read' : "not read";
+        $edit.innerHTML = `<button class="edit">Edit</button>
+                           <button class="delete">Delete</button>`;
+        $edit.children[0].setAttribute("data-id", `${i}`);
 
         $row.appendChild($title);
         $row.appendChild($author);
         $row.appendChild($pages);
         $row.appendChild($read);
-        $row.appendChild($delete);
+        $row.appendChild($edit);
 
         $table.appendChild($row);
     }
@@ -80,7 +81,7 @@ function setTheme() {
     $a.forEach((element) => {
         element.classList.toggle("light");
     });
-    ($theme.textContent === "Light") ? ($theme.textContent = "Dark") : ($theme.textContent = "Light");
+    $theme.textContent === "Light" ? ($theme.textContent = "Dark") : ($theme.textContent = "Light");
 }
 
 $createButton.addEventListener("click", function () {
@@ -126,8 +127,18 @@ $cancelButton.addEventListener("click", function (event) {
 });
 
 document.querySelector("body").addEventListener("click", function (event) {
+    //delete book
     if (event.target.className === "delete") {
         myLibrary.splice(event.target.dataset.id, 1);
+        setBooksToLocalStorage();
+        displayBook();
+    }
+
+    //toggle read
+    if (event.target.className === "edit") {
+        myLibrary[event.target.dataset.id].read
+            ? (myLibrary[event.target.dataset.id].read = false)
+            : (myLibrary[event.target.dataset.id].read = true);
         setBooksToLocalStorage();
         displayBook();
     }
