@@ -2,6 +2,7 @@ const $createButton = document.querySelector(".button-create");
 const $addButton = document.querySelector(".button-add");
 const $cancelButton = document.querySelector(".button-cancel");
 const $form = document.querySelector(".form-container");
+const $theme = document.querySelector(".theme");
 
 let myLibrary = [];
 
@@ -68,6 +69,20 @@ function displayBook() {
 }
 displayBook();
 
+function setTheme() {
+    const $body = document.querySelector("body");
+    const $a = document.querySelectorAll("a");
+    const $header = document.querySelector(".header");
+    const $container = document.querySelector(".container");
+    $body.classList.toggle("light");
+    $header.classList.toggle("light");
+    $container.classList.toggle("light");
+    $a.forEach((element) => {
+        element.classList.toggle("light");
+    });
+    ($theme.textContent === "Light") ? ($theme.textContent = "Dark") : ($theme.textContent = "Light");
+}
+
 $createButton.addEventListener("click", function () {
     if (!$form.classList.contains("form-container-show")) {
         $form.classList.add("form-container-show");
@@ -116,4 +131,8 @@ document.querySelector("body").addEventListener("click", function (event) {
         setBooksToLocalStorage();
         displayBook();
     }
+});
+
+$theme.addEventListener("click", function (event) {
+    setTheme();
 });

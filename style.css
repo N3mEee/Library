@@ -16,6 +16,7 @@ body {
     grid-template-rows: 50px 1fr 50px;
     height: 100vh;
     position: relative;
+    transition: all 400ms ease-in-out;
 }
 
 .header {
@@ -24,6 +25,7 @@ body {
     align-items: center;
     margin: 10px 40px;
     background-color: var(--lightdark);
+    transition: all 400ms ease-in-out;
 }
 
 .header .logo {
@@ -46,6 +48,7 @@ ul a,
 a {
     color: var(--blueish);
     text-decoration: none;
+    transition: all 400ms ease-in-out;
 }
 
 .container {
@@ -54,6 +57,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 400ms ease-in-out;
 }
 
 button {
@@ -66,7 +70,7 @@ button {
     color: var(--dark);
     align-self: center;
     border: 2px solid var(--dark);
-    transition: all 300ms ease-in-out;
+    transition: all 400ms ease-in-out;
     z-index: 999;
 }
 
@@ -75,7 +79,7 @@ button:hover {
     background-color: var(--lightdark);
     color: var(--light);
     border-color: var(--blueish);
-    transition: all 300ms ease-in-out;
+    transition: all 400ms ease-in-out;
 }
 
 .table-wrapper {
@@ -132,7 +136,8 @@ table tr:nth-child(odd) {
     z-index: 9999;
 }
 
-form, form ul>li{
+form,
+form ul > li {
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -148,5 +153,21 @@ form li:nth-child(4) {
 
 .p-error {
     padding-bottom: 10px;
-    color: red
+    color: red;
+}
+
+body.light,
+.header.light {
+    background-color: var(--blueish);
+    transition: all 400ms ease-in-out;
+}
+.container.light {
+    background-color: var(--light);
+    transition: all 400ms ease-in-out;
+}
+
+ul a.light,
+a.light {
+    color: var(--dark);
+    transition: all 400ms ease-in-out;
 }
