@@ -5,6 +5,5 @@ Project: Library JavaScript Course
 - [view live](https://n3meee.github.io/Library/)
 
 # TODO:
-- Add the read toggle feature
 - Add current theme to localStorage
-- Clean the code
+- Clean the code (if necessary)
