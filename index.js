@@ -5,7 +5,10 @@ const $form = document.querySelector(".form-container");
 const $theme = document.querySelector(".theme");
 
 let myLibrary = [];
+getBooksFromLocalStorage();
+displayBook();
 
+// Book constructor
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -13,17 +16,24 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-Book.prototype.changeReadStatus = function(){
-    this.read ? this.read = false : this.read = true;
-}
+// Book prototype that can be used to change the read status of the book
+Book.prototype.changeReadStatus = function () {
+    this.read ? (this.read = false) : (this.read = true);
+};
 
+// Get the books (string) from local storage and add them to the myLibrary collection using the Book constructor to be able to use the Book prototype changeReadStatus
+// Note for myself: To change from string to object I used the JSON.parse function
+// Note for myself: Example: let string = '{"title": "My Book", "author": "Author Name"}';
+// Note for myself: Example: let obj = JSON.parse(string)';
+// Note for myself: Example: console.log(obj.title); should print "myBook"
 function getBooksFromLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
         const bookObj = JSON.parse(localStorage[`book${i}`]);
         myLibrary.push(new Book(bookObj.title, bookObj.author, bookObj.pages, bookObj.read));
     }
 }
-getBooksFromLocalStorage();
+
+// Note for myself: get rid of the book${i} and also try again with pushing to library using addBookToLibrary
 
 function setBooksToLocalStorage() {
     localStorage.clear();
@@ -31,7 +41,6 @@ function setBooksToLocalStorage() {
         localStorage.setItem(`book${i}`, JSON.stringify(myLibrary[i]));
     }
 }
-setBooksToLocalStorage();
 
 function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
@@ -68,7 +77,6 @@ function displayBook() {
         $tbody.appendChild($row);
     }
 }
-displayBook();
 
 function setTheme() {
     const $body = document.querySelector("body");
