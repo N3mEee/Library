@@ -13,9 +13,14 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.changeReadStatus = function(){
+    this.read ? this.read = false : this.read = true;
+}
+
 function getBooksFromLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
-        myLibrary.push(JSON.parse(localStorage.getItem(`book${i}`)));
+        const bookObj = JSON.parse(localStorage[`book${i}`]);
+        myLibrary.push(new Book(bookObj.title, bookObj.author, bookObj.pages, bookObj.read));
     }
 }
 getBooksFromLocalStorage();
@@ -131,9 +136,7 @@ document.querySelector("body").addEventListener("click", function (event) {
 
     //toggle read
     if (event.target.className === "edit") {
-        myLibrary[event.target.dataset.id].read
-            ? (myLibrary[event.target.dataset.id].read = false)
-            : (myLibrary[event.target.dataset.id].read = true);
+        myLibrary[event.target.dataset.id].changeReadStatus();
         setBooksToLocalStorage();
         displayBook();
     }
