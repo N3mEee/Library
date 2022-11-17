@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Round&display=swap");
 :root {
     --dark: #222831;
     --lightdark: #393e46;
@@ -8,6 +9,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "Nova Round", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -70,16 +72,16 @@ button {
     color: var(--dark);
     align-self: center;
     border: 2px solid var(--dark);
-    transition: all 400ms ease-in-out;
+    transition: all 200ms ease-in-out;
     z-index: 999;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: var(--lightdark);
+    background-color: var(--blueish);
     color: var(--light);
-    border-color: var(--blueish);
-    transition: all 400ms ease-in-out;
+    box-shadow: 0 0 10px var(--blueish);
+    transition: all 200ms ease-in-out;
 }
 
 .table-wrapper {
@@ -88,6 +90,7 @@ button:hover {
 }
 
 table {
+    box-shadow: 0px 0px 20px var(--blueish);
     border-collapse: collapse;
     width: 100%;
     white-space: nowrap;
@@ -97,7 +100,6 @@ table {
 
 table td,
 table th {
-    box-shadow: 0px 0px 1000px var(--blueish);
     text-align: center;
     padding: 8px;
     border: 1px solid var(--blueish);
@@ -120,29 +122,26 @@ table tr:nth-child(odd) {
 
 .form-container {
     background-color: var(--dark);
-    box-shadow: 0 0 40px var(--dark);
+    box-shadow: 0 0 10px var(--blueish);
     position: absolute;
     top: 50%;
     left: -550%;
-    width: 400px;
-    height: 400px;
+    padding: 20px;
     transform: translate(-50%, -50%);
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .form-container-show {
     left: 50%;
-    transition: all 0.4s ease-in-out;
     z-index: 9999;
 }
 
 form,
 form ul > li {
     display: flex;
-    gap: 10px;
+    padding: 5px;
     flex-direction: column;
     color: var(--blueish);
-    align-items: center;
     text-align: center;
 }
 
@@ -156,6 +155,7 @@ form li:nth-child(4) {
     color: red;
 }
 
+/* Light theme */
 body.light,
 .header.light {
     background-color: var(--blueish);
