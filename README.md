@@ -9,4 +9,3 @@ Project: Library JavaScript Course
 # TODO:
 
 -   Add current theme to localStorage
--   Clean the code (if necessary)
