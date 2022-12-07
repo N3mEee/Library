@@ -5,21 +5,23 @@ const $form = document.querySelector(".form-container");
 const $theme = document.querySelector(".theme");
 
 let myLibrary = [];
-getBooksFromLocalStorage();
-displayBook();
 
-// Book constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// Book obj constructor and methods
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    changeReadStatus = () => {
+        this.read ? (this.read = false) : (this.read = true);
+    };
 }
 
-// Book prototype that can be used to change the read status of the book
-Book.prototype.changeReadStatus = function () {
-    this.read ? (this.read = false) : (this.read = true);
-};
+getBooksFromLocalStorage();
+displayBook();
 
 // Get the books (string) from local storage and add them to the myLibrary collection using the Book constructor to be able to use the Book prototype changeReadStatus
 // Note for myself: To change from string to object I used the JSON.parse function
